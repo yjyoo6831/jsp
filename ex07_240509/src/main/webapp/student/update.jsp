@@ -20,13 +20,13 @@
 					</div>
 					<div class="input-group mb-2">
 						<span class="input-group-text justify-content-center">Name</span>
-						<input name="sname" class="form-control" value="${stu.sname }">
+						<input name="sname" class="form-control" value="${stu.sname}">
 						</div>
 						<div class="input-group mb-2 md-10">
 						<span class="input-group-text justify-content-center">Student Dept</span>
 						<select class="form-select" name="dept">
 							<option <c:out value="${stu.sdept=='컴공'?'selected':' '}"/> value="컴공">컴퓨터공학과</option>
-							<option <c:out value="${stu.sdept=='전자'?'selected':' '}"/> value="전자" selected>전자공학과</option>
+							<option <c:out value="${stu.sdept=='전자'?'selected':' '}"/> value="전자" >전자공학과</option>
 							<option <c:out value="${stu.sdept=='건축'?'selected':' '}"/> value="건축">건축공학과</option>
 							<option <c:out value="${stu.sdept=='피아노'?'selected':' '}"/> value="피아노">피아노과</option>
 						</select>

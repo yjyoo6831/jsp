@@ -54,8 +54,10 @@ public class CouVO extends ProVO {
 	@Override
 	public String toString() {
 		return "CouVO [lcode=" + lcode + ", lname=" + lname + ", hours=" + hours + ", room=" + room + ", instructor="
-				+ instructor + ", capacity=" + capacity + ", persons=" + persons + ", getPname()=" + getPname() + "]";
+				+ instructor + ", capacity=" + capacity + ", persons=" + persons + ", getPname()=" + getPname()
+				+ ", getDept()=" + getDept() + "]";
 	}
+	
 	
 	
 }

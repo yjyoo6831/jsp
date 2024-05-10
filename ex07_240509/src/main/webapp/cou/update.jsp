@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
    <style>
    	.input-group span{
    		width:150px;
@@ -12,58 +12,57 @@
 			<div class="card-header">
 				<h3 class="text-center">강좌수정</h3>
 			</div>
+			
 			<div class="card-body">
 				<form name="frm">
-					<div class="input-group mb-2  text-bg-gray">
-						<span class="input-group-text justify-content-center">Student No.</span>
-						<input name="sno" class="form-control" value="${stu.scode}" readonly>
+					<div class="input-group mb-2">
+						<span class="input-group-text justify-content-center">Course No.</span>
+						<input name="lcode" class="form-control" value="${up.lcode}" readonly>
 					</div>
 					<div class="input-group mb-2">
-						<span class="input-group-text justify-content-center">Name</span>
-						<input name="sname" class="form-control" value="${stu.sname }">
-						</div>
+						<span class="input-group-text justify-content-center">Course Name</span>
+						<input name="lname" class="form-control" value="${up.lname}">
+						<input name="instructor" class="form-control" value="${up.instructor}">
+					</div>
+					<div class="input-group mb-2 md-10">
+					<span class="input-group-text justify-content-center">Course Dept</span>
+					<select class="form-select" name="dept">
+							<option <c:out value="${up.dept=='컴공'?'selected':' '}"/> value="컴공">컴퓨터공학과</option>
+							<option <c:out value="${up.dept=='전자'?'selected':' '}"/> value="전자" >전자공학과</option>
+							<option <c:out value="${up.dept=='건축'?'selected':' '}"/> value="건축">건축공학과</option>
+							<option <c:out value="${up.dept=='피아노'?'selected':' '}"/> value="피아노">피아노과</option>
+					</select>
+					</div>
 						<div class="input-group mb-2 md-10">
-						<span class="input-group-text justify-content-center">Student Dept</span>
-						<select class="form-select" name="dept">
-							<option <c:out value="${stu.sdept=='컴공'?'selected':' '}"/> value="컴공">컴퓨터공학과</option>
-							<option <c:out value="${stu.sdept=='전자'?'selected':' '}"/> value="전자" selected>전자공학과</option>
-							<option <c:out value="${stu.sdept=='건축'?'selected':' '}"/> value="건축">건축공학과</option>
-							<option <c:out value="${stu.sdept=='피아노'?'selected':' '}"/> value="피아노">피아노과</option>
-						</select>
+						<span class="input-group-text justify-content-center">Hours</span>
+						
+						<div class="form-check m-2">
+							<input <c:out value="${up.hours==2?'checked':' '}"/> value="2" name="hours" class="form-check-input" type="radio" >
+							<label class="form-check-label">2hours</label>
+						</div>
+						<div class="form-check m-2">
+							<input <c:out value="${up.hours==3?'checked':' '}"/> value="3" name="hours" class="form-check-input" type="radio">
+							<label class="form-check-label">3hours</label>
+						</div>
 					</div>
 					<div class="input-group mb-2">
-						<span class="input-group-text justify-content-center">Year</span>
-						<div class="form-check m-2">
-							<input <c:out value="${stu.year==1?'checked':' '}"/> value="1" name="year" class="form-check-input" type="radio" checked>
-							<label class="form-check-label">first year</label>
-						</div>
-						<div class="form-check m-2">
-							<input <c:out value="${stu.year==2?'checked':' '}"/> value="2"  name="year" class="form-check-input" type="radio">
-							<label class="form-check-label">second year</label>
-						</div>
-						<div class="form-check m-2">
-							<input <c:out value="${stu.year==3?'checked':' '}"/> value="3" name="year" class="form-check-input" type="radio">
-							<label class="form-check-label">third year</label>
-						</div>
-						<div class="form-check m-2">
-							<input <c:out value="${stu.year==4?'checked':' '}"/> value="4" name="year" class="form-check-input" type="radio">
-							<label class="form-check-label">last year</label>
-						</div>
+						<span class="input-group-text justify-content-center">Room</span>
+						<input name="room" class="form-control" value="${up.room}">
 					</div>
+					<div class="input-group mb-2">
+						<span class="input-group-text justify-content-center">Capacity</span>
+							<input name="capacity" class="form-control" value="10" type='number' min='10' max='300' step='10' pattern="[0-9]+">
+					</div>
+					
 					<div class="input-group mb-2">
 						<span class="input-group-text justify-content-center">Professor</span>
-						<input value="${stu.advisor}" name="advisor" class="form-control" placeholder="Professor No" readonly>
-						<input value="${stu.pname}" name="pname" class="form-control" placeholder="Professor Name" readonly>
+						<input name="instructor" class="form-control" placeholder="Professor No" readonly>
+						<input  name="pname" class="form-control" placeholder="Professor Name" readonly>
 						<button class="btn btn-primary" type="button" id="search" >search</button>
 						</div>
-					<div class="input-group mt-3">
-						<span class="input-group-text justify-content-center">Birthday</span>
-						<input name="birthday" class="form-control" type="date" value="2005-01-01" value="${stu.birthday}">
-						</div>	
-					<div class="text-center mt-3">
-					<button class="btn btn-primary">학생수정</button>
-					<button class="btn btn-secondary" type="reset">수정취소</button>
-					</div>
+					</div>	
+					
+					
 				</form>
 			</div>
 		</div>
@@ -81,15 +80,16 @@ $(frm.pname).on("click",function(){
 });
 	$(frm).on("submit",function(e){
 		e.preventDefault();
-	const sname=$(frm.sname).val();
-	const advisor=$(frm.advisor).val();
-	if (sname==""||advisor==""){
-		alert("학생 이름과 지도교수를 입력하세요");
-		$(frm.sname).focus();
+	const lname=$(frm.lname).val();
+	const instructor=$(frm.instructor).val();
+	if (lname=="" || instructor==""){
+		alert("강좌명과 교수명을 입력하세요.");
+		$(frm.lname).focus();
 		return;
 	}
 	
 	if(confirm("수정하시겠습니까?")){
+		console.log("수정완료")
 		frm.method="post";
 		frm.submit();
 	}

@@ -24,7 +24,7 @@
 						<div class="input-group mb-2 md-10">
 						<span class="input-group-text justify-content-center">Dept</span>
 						<select class="form-select" name="dept">
-							<option value="컴공">컴퓨터공학과</option>
+							<option value="전산">컴퓨터공학과</option>
 							<option value="전자">전자공학과</option>
 							<option value="건축">건축공학과</option>
 							<option value="피아노">피아노과</option>

@@ -90,10 +90,9 @@ let word=$(frm.word).val();
 			dataType:"json",
 			data:{page,size,key,word},
 			success:function(data){
-				console.log(data);
+				//console.log(data);
 				const temp=Handlebars.compile($("#temp_cou").html());
 				$("#div_cou").html(temp(data));
-			
 			}
 		});
 	}

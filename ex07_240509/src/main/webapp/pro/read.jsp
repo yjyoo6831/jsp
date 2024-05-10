@@ -11,6 +11,10 @@
 <div class="row">
 	<div class="col">
 		<div><h1>교수정보</h1></div>
+		<div class="text-end mb-3">
+			<button class="btn btn-primary" id="update">수정</button>
+			<button class="btn btn-danger" id="delete">삭제</button>
+		</div>
 		<table class="table table-bordered">
 			<tr>
 				<td class="title">교수번호</td>
@@ -29,12 +33,10 @@
 				<td><fmt:setLocale value="ko_KR" /><fmt:formatNumber type="currency" value="${pro.salary}" /></td>
 			</tr>
 		</table>
-		<div class="text-center my-5">
-			<button class="btn btn-primary me-3" id="update">교수수정</button>
-			<button class="btn btn-danger" id="delete">교수삭제</button>
-		</div>
+		
 	</div>
 </div>
+<jsp:include page="info.jsp"/>
 
 <script>
 //수정 시 

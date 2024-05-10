@@ -28,6 +28,7 @@
 							<option value="전산" <c:out value="${pro.dept=='전산'? 'selected' : ' ' }"/>>컴퓨터공학과</option>
 							<option value="전자" <c:out value="${pro.dept=='전자'? 'selected' : ' ' }"/> >전자공학과</option>
 							<option value="건축" <c:out value="${pro.dept=='건축'? 'selected' : ' ' }"/> >건축공학과</option>
+							<option value="피아노" <c:out value="${pro.dept=='피아노'? 'selected' : ' ' }"/> >피아노과</option>
 						</select>
 					</div>
 					<div class="input-group mb-2">
@@ -54,7 +55,7 @@
 						<input name="hiredate" class="form-control" type="date" value="${pro.hiredate}">
 						</div>	
 					<div class="text-center mt-3">
-					<button class="btn btn-primary">교수정보동록</button>
+					<button class="btn btn-primary">교수정보등록</button>
 					<button class="btn btn-secondary" type="reset">수정취소</button>
 					</div>
 				</form>

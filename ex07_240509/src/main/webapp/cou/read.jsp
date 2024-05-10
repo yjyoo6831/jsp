@@ -10,58 +10,68 @@
 
 <div class="row">
 	<div class="col">
-		<div><h1>학생정보</h1></div>
-		<table class="table table-bordered">
+		<div><h1>강좌정보</h1></div>
+		<div class="text-end mb-3" >
+			<button class="btn btn-primary" id="update">수정</button>
+			<button class="btn btn-danger" id="delete">삭제</button>
+		</div>
+		<table class="table table-bordered mt-3">
 			<tr>
-				<td class="title">학생번호</td>
-				<td>${stu.scode}</td>
-				<td class="title">학생이름</td>
-				<td>${stu.sname}</td>
-				<td class="title">학생학과</td>
-				<td>${stu.sdept}</td>
+				<td class="title">강좌번호</td>
+				<td>${rcou.lcode}</td>
+				<td class="title">강좌명</td>
+				<td>${rcou.lname}</td>
+				<td class="title">수강시수</td>
+				<td>${rcou.hours}</td>
 			</tr>
 			<tr>
-				<td class="title">생일</td>
-				<td>${stu.birthday}</td>
-				<td class="title">학년</td>
-				<td>${stu.year}</td>
-				<td class="title">지도교수</td>
-				<td>${stu.pname} (${stu.advisor})</td>
+				<td class="title">강의실번호</td>
+				<td>${rcou.room}</td>
+				<td class="title">수강인원</td>
+				<td>${rcou.persons} / ${rcou.capacity}</td>
+				<td class="title">담당교수</td>
+				<td>${rcou.pname} (${rcou.instructor})</td>
 			</tr>
 		</table>
-		<div class="text-center my-5">
-			<button class="btn btn-primary me-3" id="update">학생수정</button>
-			<button class="btn btn-danger" id="delete">학생삭제</button>
-		</div>
+		
 	</div>
 </div>
-
+<jsp:include page="info.jsp" />
 <script>
 //수정 시 
 
 $("#update").on("click",function(){
 	console.log("pushed update");
-	const scode="${stu.scode}";
-	location.href="/student/update?scode=" + scode;
+	const lcode="${rcou.lcode}";
+	location.href="/cou/update?lcode=" + lcode;
 });
 
 $("#delete").on("click",function(){
-	const scode="${stu.scode}";
-	console.log("pushed delete");
-	if(confirm("Would you like to delete No."+ scode+" ?")){
-		//교수삭제
+	const course="${rcou.lname}";
+	const lcode="${rcou.lcode}";
+	console.log("pushed delete button...........",lcode);
+	if(confirm("Would you like to delete "+ course + "("+ lcode + ") ?")){ 
+		//강좌삭제
 		$.ajax({
 			type:"post",
-			url:"/stu/delete",
-			data:{scode},
+			url:"/cou/delete",
+			data:{lcode},
+			
 			success:function(data){
 				if(data=="true"){
-					alert("Delete complete!");
-					location.href="/stu/list";	
+				console.log("data........." ,data);
+				
+				console.log("......cou delete data type : ", typeof data);
+				alert("Delete complete!");
+				location.href="/cou/list";
 				}else{
-					alert("There is course registration data applied by the student.\n수강 신청 내역이 있어 삭제가 불가합니다.");
+					alert("This course have aleady applied students.");
 				}
+			},
+			error : function(a,b,c) {
+				console.log(a,b,c);
 			}
+			
 		});
 	}
 });

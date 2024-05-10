@@ -11,7 +11,11 @@
 <div class="row">
 	<div class="col">
 		<div><h1>학생정보</h1></div>
-		<table class="table table-bordered">
+		<div class="text-end mt-5 mb-2 " >
+			<button class="btn btn-primary" id="update">수정</button>
+			<button class="btn btn-danger" id="delete">삭제</button>
+		</div>
+		<table class="table table-bordered" >
 			<tr>
 				<td class="title">학생번호</td>
 				<td>${stu.scode}</td>
@@ -29,13 +33,10 @@
 				<td>${stu.pname} (${stu.advisor})</td>
 			</tr>
 		</table>
-		<div class="text-center my-5">
-			<button class="btn btn-primary me-3" id="update">학생수정</button>
-			<button class="btn btn-danger" id="delete">학생삭제</button>
-		</div>
+		
 	</div>
 </div>
-
+<jsp:include page="info.jsp" />
 <script>
 //수정 시 
 
@@ -54,11 +55,14 @@ $("#delete").on("click",function(){
 			type:"post",
 			url:"/stu/delete",
 			data:{scode},
+			
 			success:function(data){
+				
 				if(data=="true"){
 					alert("Delete complete!");
 					location.href="/stu/list";	
 				}else{
+					console.log(".............",data)
 					alert("There is course registration data applied by the student.\n수강 신청 내역이 있어 삭제가 불가합니다.");
 				}
 			}

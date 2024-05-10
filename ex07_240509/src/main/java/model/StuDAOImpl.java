@@ -20,7 +20,7 @@ public class StuDAOImpl implements StuDAO{
 				lvo.setScode(rs.getString("scode"));
 				lvo.setSname(rs.getString("sname"));
 				lvo.setSdept(rs.getString("dept"));
-				lvo.setAdvisor(rs.getString("Advisor"));
+				lvo.setAdvisor(rs.getString("advisor"));
 				lvo.setPname(rs.getString("pname"));
 				lvo.setBirthday(rs.getString("birthday"));
 				lvo.setYear(rs.getInt("year"));
@@ -46,7 +46,7 @@ public class StuDAOImpl implements StuDAO{
 				code=rs.getString("code");
 			}
 		} catch (Exception e) {
-			System.out.println("StudentVOImpl  getCode error : "+e.toString() );
+			System.out.println("StudentDAOImpl  getCode error : "+e.toString() );
 		}
 		return code;
 	}
@@ -64,7 +64,7 @@ public class StuDAOImpl implements StuDAO{
 				
 			}
 		} catch (Exception e) {
-			System.out.println("StudentVOImpl total  error : "+e.toString());
+			System.out.println("StudentDAOImpl total  error : "+e.toString());
 			
 		}
 		return total;
@@ -108,7 +108,7 @@ public class StuDAOImpl implements StuDAO{
 				System.out.println(vo.toString());
 			}
 		} catch (Exception e) {
-			System.out.println("StudentVOImpl read  error : "+e.toString());
+			System.out.println("StudentDAOImpl read  error : "+e.toString());
 		}
 		return vo;
 	}

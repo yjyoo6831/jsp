@@ -83,18 +83,8 @@ h1{
     
     
     
-    table{
-  width:100%;
-  table-layout: fixed;
-}
-.tbl-header{
-  background-color: rgba(255,255,255,0.3);
- }
-.tbl-content{
-  height:300px;
-  overflow-x:auto;
-  margin-top: 0px;
-  border: 1px solid rgba(255,255,255,0.3);
+input:invalid {
+  border: 3px solid red;
 }
 
     

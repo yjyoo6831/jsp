@@ -21,7 +21,7 @@
       		<option value="전산">컴퓨터공학과</option>
       		<option value="전자">전자공학과</option>
       		<option value="건축">건축공학과</option>
-      		<option value="피아노">피아노과</option>
+      		<option value="피아노" selected>피아노과</option>
       	</select>
       	</div>
         <div id="div_pro" class="mt-3"></div>
@@ -37,7 +37,7 @@
 
 <script id="temp_pro" type="x-handlebars-template">
 
-<table  class="table table-bordered table-hover">
+<table  class="table table-bordered">
 <tr class="text-center">
 	<td>No</td>
 	<td>Name</td>
@@ -45,11 +45,10 @@
 </tr>
  <tbody class="table-group-divider">
 {{#each .}}
-<tr class="text-center values" instructor="{{instructor}}" pname="{{pname}}" dept="{{dept}}" style="cursor:pointer">
+<tr class="text-center values  table-hover" instructor="{{instructor}}" pname="{{pname}}" dept="{{dept}}" style="cursor:pointer">
 	<td>{{instructor}}</td>
 	<td>{{pname}}</td>
 	<td>{{dept}}</td>
-	
 </tr>
 {{/each}}
 </table> 
@@ -73,7 +72,7 @@ $(frm.dept).on("change", function(){
 $("#div_pro").on("click",".values",function(){
 	const instructor=$(this).attr("instructor");
 	const pname=$(this).attr("pname");
-	alert(instructor+ " "+pname);
+	//alert(instructor+ " "+pname);
 	$(frm.instructor).val(instructor);
 	$(frm.pname).val(pname);
 	$("#modal").modal("hide");
@@ -89,7 +88,7 @@ function getData(){
 		data : {page,size,key,word},
 		dataType:"json",
 		success:function(data){
-			//console.log(data)
+			 console.log(data)
 			const temp=Handlebars.compile($("#temp_pro").html());
 			$("#div_pro").html(temp(data));
 		}

@@ -15,7 +15,7 @@
 				<form name="frm">
 					<div class="input-group mb-2">
 						<span class="input-group-text justify-content-center">Course No.</span>
-						<input name="lcode" class="form-control" value="${code}" >
+						<input name="lcode" class="form-control" value="${icou}" readonly>
 					</div>
 					<div class="input-group mb-2">
 						<span class="input-group-text justify-content-center">Course Name</span>
@@ -24,7 +24,7 @@
 					<div class="input-group mb-2 md-10">
 					<span class="input-group-text justify-content-center">Department</span>
 						<select class="form-select" name="dept">
-							<option value="컴공">컴퓨터공학과</option>
+							<option value="전산">컴퓨터공학과</option>
 							<option value="전자">전자공학과</option>
 							<option value="건축">건축공학과</option>
 							<option value="피아노" selected>피아노과</option>
@@ -49,7 +49,7 @@
 					</div>
 					<div class="input-group mb-2">
 						<span class="input-group-text justify-content-center">Capacity</span>
-							<input name="capacity" class="form-control" value="0" type="number">
+							<input name="capacity" class="form-control" value="10" type='number' min='10' max='300' step='10' pattern="[0-9]+">
 					</div>
 					
 					<div class="input-group mb-2">
@@ -60,7 +60,7 @@
 						</div>
 					</div>	
 					
-					<div class="text-center mt-3">
+					<div class="text-center mt-3 mb-3">
 					<button class="btn btn-primary">강좌등록</button>
 					<button class="btn btn-secondary" type="reset">등록취소</button>
 					</div>

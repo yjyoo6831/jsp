@@ -94,6 +94,7 @@ public class CouDAOImpl implements CouDAO{
 				lvo.setCapacity(rs.getInt("capacity"));
 				lvo.setPname(rs.getString("pname"));
 				lvo.setInstructor(rs.getString("instructor"));
+				lvo.setDept(rs.getString("dept"));
 				System.out.println(lvo.toString());
 			}
 		} catch (Exception e) {
@@ -104,14 +105,43 @@ public class CouDAOImpl implements CouDAO{
 
 	@Override
 	public void update(CouVO vo) {
-		// TODO Auto-generated method stub
+		try {
+			String sql="update view_cou set lname=?, hours=?, room=?, capacity=? persons=?, "
+					+ "pname=?, instructor=?,dept=?, where lcode=?"; 
+				
+			PreparedStatement ps=con.prepareStatement(sql);
+			
+			ps.setString(1,vo.getLname());
+			ps.setInt(2,vo.getHours());
+			ps.setString(3,vo.getRoom());
+			ps.setInt(4,vo.getCapacity());
+			ps.setInt(5,vo.getPersons());
+			ps.setString(7,vo.getInstructor());
+			ps.setString(6,vo.getPname());
+			ps.setString(8,vo.getDept());
+			ps.setString(9,vo.getLcode());
+			ps.execute();
+		} catch (Exception e) {
+			System.out.println("Course update error : "+e.toString());
+		}
 		
 	}
 
 	@Override
-	public int delete(String lcode) {
-		// TODO Auto-generated method stub
-		return 0;
+	public boolean delete(String lcode) {
+		int res=0;
+		try {
+			String sql="delete from courses where lcode=?"; 
+				
+			PreparedStatement ps=con.prepareStatement(sql);
+			ps.setString(1,lcode);
+			ps.execute();
+			return true;
+			
+		} catch (Exception e) {
+			System.out.println("course  delete error : "+e.toString());
+			return false;
+		}
 	}
 
 	@Override
