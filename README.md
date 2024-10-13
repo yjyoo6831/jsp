@@ -1,1 +1,1 @@
-[공부] Jsp/Servelt 기초 이해 
+[공부] Jsp/Servlet 기초 이해 
